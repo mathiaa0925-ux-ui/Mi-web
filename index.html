@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krea Designs | Estudio de Diseño Estratégico & Lujo</title>
+    <meta name="description"
+        content="Krea Designs es un estudio especializado en branding estratégico, diseño web premium, packaging, editorial y social media para elevar tu marca al siguiente nivel.">
+    <meta name="keywords"
+        content="Diseño Web Premium, Branding Estratégico, Agencia de Diseño, Identidad Visual, Publicidad, Estudio de Lujo">
+    <meta name="author" content="Krea Designs">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#D4AF37", // Luxury Gold
+                        "background-light": "#FAFAFA",
+                        "background-dark": "#0A0A0A",
+                        gold: {
+                            light: "#F1E4C3",
+                            DEFAULT: "#D4AF37",
+                            dark: "#996515",
+                        }
+                    },
+                    fontFamily: {
+                        display: ["Space Grotesk", "sans-serif"],
+                        serif: ["Cinzel", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        /* Custom Animations & Styles */
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #996515 0%, #D4AF37 50%, #F1E4C3 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-bg {
+            background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+        }
+
+        .beam-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150vw;
+            height: 150vw;
+            transform: translate(-50%, -50%);
+            animation: slow-spin 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+            transition: left 0.1s cubic-bezier(0.23, 1, 0.32, 1), top 0.1s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .beam {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 180deg at 50% 50%, transparent 0%, rgba(212, 175, 55, 0.25) 10%, rgba(241, 228, 195, 0.35) 15%, rgba(212, 175, 55, 0.25) 20%, transparent 40%);
+            filter: blur(80px);
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .dark .testimonial-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes slow-spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* Continuous Logo Scroll */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .scroll-container {
+            display: flex;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .logo-track {
+            display: flex;
+            width: fit-content;
+            animation: scroll 40s linear infinite;
+        }
+
+        .logo-track:hover {
+            animation-play-state: paused;
+        }
+
+        .logo-item {
+            flex: 0 0 auto;
+            width: 400px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+        }
+
+        .logo-item img {
+            max-height: 140px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.9;
+            transition: all 0.4s ease;
+        }
+
+        .logo-item:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-sans transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-0 w-full z-50 glass-nav border-b border-slate-200/50 dark:border-white/10 bg-white dark:bg-background-dark/90">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <!-- Logo: PNG con fondo transparente -->
+                <img src="../LG NEGRO (1).png" alt="KreaDesigns Logo"
+                    class="h-10 w-auto dark:invert transition-all duration-300">
+                <span
+                    class="font-display font-bold text-xl tracking-tight hidden sm:block text-slate-900 dark:text-white transition-colors duration-300">KREA<span
+                        class="text-primary">DESIGNS</span></span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-10">
+                <a href="index.html" class="text-xs uppercase tracking-[0.2em] font-medium text-primary">Inicio</a>
+                <a href="projects.html"
+                    class="text-xs uppercase tracking-[0.2em] font-medium hover:text-primary transition-colors">Portafolio</a>
+                <a href="services.html"
+                    class="text-xs uppercase tracking-[0.2em] font-medium hover:text-primary transition-colors">Servicios</a>
+                <a href="about.html"
+                    class="text-xs uppercase tracking-[0.2em] font-medium hover:text-primary transition-colors">Sobre
+                    Krea</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button id="themeToggle"
+                    class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 transition-colors"
+                    aria-label="Toggle Dark Mode">
+                    <span class="material-icons-outlined block dark:hidden">dark_mode</span>
+                    <span class="material-icons-outlined hidden dark:block">light_mode</span>
+                </button>
+                <a href="contact.html"
+                    class="hidden md:inline-block px-6 py-2 border border-slate-900 dark:border-white text-xs uppercase tracking-[0.2em] hover:bg-primary hover:border-primary hover:text-white dark:hover:text-black transition-all">Contacto</a>
+                <button class="md:hidden flex items-center p-2">
+                    <span class="material-icons-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden hero-bg text-white">
+        <!-- Elegant Rotating Light -->
+        <div class="beam-wrapper">
+            <div class="beam"></div>
+        </div>
+
+        <!-- Decorative Glows -->
+        <div
+            class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse pointer-events-none mix-blend-screen">
+        </div>
+        <div
+            class="absolute bottom-1/4 -right-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen">
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 text-center mt-10">
+            <div
+                class="inline-block px-4 py-1.5 mb-8 border border-primary/30 rounded-full bg-primary/5 backdrop-blur-sm fade-in">
+                <span class="text-xs font-bold tracking-[0.2em] uppercase text-primary">Estudio de Diseño</span>
+            </div>
+            <h1 class="font-display font-semibold text-5xl md:text-7xl lg:text-8xl mb-8 leading-[1.1] tracking-tight fade-in"
+                style="transition-delay: 100ms;">
+                KreaDesigns | <br />
+                <span class="font-display gold-gradient-text italic">Lujo & Estrategia</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 mb-12 font-light leading-relaxed fade-in"
+                style="transition-delay: 200ms;">
+                KreaDesigns no está aquí para crear cosas bonitas. Estamos aquí para construir imperios visuales. Si tu
+                marca no factura más, no impacta más y no domina su nicho, estamos perdiendo el tiempo. Estrategia
+                implacable, diseño de lujo, resultados brutales.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 fade-in"
+                style="transition-delay: 300ms;">
+                <a href="projects.html"
+                    class="group relative px-8 py-4 bg-primary text-black font-bold uppercase tracking-widest text-xs rounded-none hover:bg-gold-dark transition-all shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.23)] hover:-translate-y-1">
+                    Explorar Portafolio
+                </a>
+                <a href="services.html"
+                    class="group px-8 py-4 border border-white/20 hover:border-primary text-white font-bold uppercase tracking-widest text-xs transition-all hover:bg-white/5 hover:-translate-y-1">
+                    Nuestros Servicios
+                </a>
+            </div>
+
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce fade-in"
+                style="transition-delay: 400ms;">
+                <span class="material-icons-outlined text-slate-400">expand_more</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brief Introduction -->
+    <section class="py-32 bg-background-light dark:bg-background-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative fade-in">
+                    <div
+                        class="aspect-square bg-slate-100 dark:bg-zinc-900 overflow-hidden relative border border-slate-200 dark:border-white/5 p-12 flex items-center justify-center">
+                        <img src="../LG NEGRO (2).png" alt="KD Icon"
+                            class="w-2/3 opacity-80 dark:invert transition-all hover:scale-105 duration-700">
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <span
+                        class="text-primary font-medium tracking-[0.2em] text-xs uppercase mb-4 block">Filosofía</span>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-8">Creatividad con <span
+                            class="italic text-primary">Propósito.</span></h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                        En KreaDesigns, entendemos que el diseño no es solo estética; es el puente entre el valor de tu
+                        marca y la percepción de tus clientes. Destilamos lo complejo para presentar lo extraordinario
+                        de manera minimalista y elegante.
+                    </p>
+                    <a href="about.html"
+                        class="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2 group border-b border-primary/30 pb-1 w-fit hover:border-primary transition-all">
+                        Conoce más sobre nosotros
+                        <span
+                            class="material-icons-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Services Preview -->
+    <section class="py-32 bg-slate-50 dark:bg-zinc-950 border-y border-slate-200 dark:border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 fade-in">
+                <span
+                    class="text-primary font-medium tracking-[0.2em] text-xs uppercase mb-4 block">Especialidades</span>
+                <h2 class="font-display font-semibold text-4xl md:text-5xl mb-6">Nuestros Servicios</h2>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 (Web Design VIP moved to first) -->
+                <div
+                    class="group p-10 bg-white dark:bg-background-dark border border-slate-100 dark:border-white/5 hover:border-primary transition-all duration-500 hover:-translate-y-2 fade-in">
+                    <span
+                        class="material-icons-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform">web</span>
+                    <h3 class="font-display font-bold text-2xl mb-4">Diseño Web Premium</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8">
+                        Interfaces de usuario excepcionales, enfocadas en ofrecer experiencias inmersivas, fluidas y
+                        memorables.
+                    </p>
+                    <a href="services.html"
+                        class="text-xs uppercase tracking-widest text-primary font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                        Explorar <span class="material-icons-outlined text-sm">trending_flat</span>
+                    </a>
+                </div>
+
+                <!-- Service 2 (Brand Design moved to second) -->
+                <div
+                    class="group p-10 bg-white dark:bg-background-dark border border-slate-100 dark:border-white/5 hover:border-primary transition-all duration-500 hover:-translate-y-2 fade-in">
+                    <span
+                        class="material-icons-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform">architecture</span>
+                    <h3 class="font-display font-bold text-2xl mb-4">Diseño de Marca</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8">
+                        Identidades visuales integrales que comunican valores, posicionando a tu marca en el sector del
+                        lujo y prestigio.
+                    </p>
+                    <a href="services.html"
+                        class="text-xs uppercase tracking-widest text-primary font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                        Explorar <span class="material-icons-outlined text-sm">trending_flat</span>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div
+                    class="group p-10 bg-white dark:bg-background-dark border border-slate-100 dark:border-white/5 hover:border-primary transition-all duration-500 hover:-translate-y-2 fade-in">
+                    <span
+                        class="material-icons-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform">campaign</span>
+                    <h3 class="font-display font-bold text-2xl mb-4">Dirección Creativa</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8">
+                        Publicidad estratégica, campañas y presencia en redes sociales que capturan y mantienen la
+                        atención del público ideal.
+                    </p>
+                    <a href="services.html"
+                        class="text-xs uppercase tracking-widest text-primary font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                        Explorar <span class="material-icons-outlined text-sm">trending_flat</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Contact Info -->
+    <section id="contacto" class="py-32 relative overflow-hidden bg-background-light dark:bg-background-dark">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 fade-in">
+            <h2 class="font-display font-semibold text-4xl md:text-6xl mb-8">¿Listo para elevar tu <br /><span
+                    class="text-primary italic">presencia de marca?</span></h2>
+            <p class="text-lg text-slate-600 dark:text-slate-400 mb-12">
+                Aceptamos un número limitado de proyectos para asegurar calidad y dedicación exclusiva.
+            </p>
+            <a href="contact.html"
+                class="inline-block px-12 py-5 bg-primary text-white dark:text-black font-bold uppercase tracking-widest text-xs hover:bg-gold-dark hover:scale-105 transition-all shadow-xl shadow-primary/20">
+                Iniciar Proyecto
+            </a>
+        </div>
+    </section>
+
+    <!-- Trusted By / Clients -->
+    <section class="py-20 bg-white dark:bg-background-dark border-b border-slate-100 dark:border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12 fade-in">
+                <span class="text-primary font-medium tracking-[0.2em] text-xs uppercase mb-4 block">Alianzas</span>
+                <h2 class="font-display font-semibold text-3xl mb-6">Marcas que confían en nosotros</h2>
+            </div>
+            <div class="scroll-container fade-in">
+                <div class="logo-track">
+                    <!-- Original Set -->
+                    <div class="logo-item">
+                        <img src="assets/logos/araweb-black.webp" alt="Araweb" class="block dark:hidden">
+                        <img src="assets/logos/araweb-white.webp" alt="Araweb" class="hidden dark:block">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/logos/natural-sunshine-icon.png" alt="Natural Sunshine" class="dark:invert-0 invert">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/branding/logo negro.png" alt="Bunkr" class="block dark:hidden">
+                        <img src="assets/branding/logo blanco.png" alt="Bunkr" class="hidden dark:block">
+                    </div>
+                    
+                    <!-- Identical Duplicate Set for Seamless Loop -->
+                    <div class="logo-item">
+                        <img src="assets/logos/araweb-black.webp" alt="Araweb" class="block dark:hidden">
+                        <img src="assets/logos/araweb-white.webp" alt="Araweb" class="hidden dark:block">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/logos/natural-sunshine-icon.png" alt="Natural Sunshine" class="dark:invert-0 invert">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/branding/logo negro.png" alt="Bunkr" class="block dark:hidden">
+                        <img src="assets/branding/logo blanco.png" alt="Bunkr" class="hidden dark:block">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+
+    <section class="py-32 bg-background-light dark:bg-background-dark overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 fade-in">
+                <span class="text-primary font-medium tracking-[0.2em] text-xs uppercase mb-4 block">Testimonios</span>
+                <h2 class="font-display font-semibold text-4xl md:text-5xl mb-6 text-slate-900 dark:text-white">
+                    Confianza de Nuestros Clientes</h2>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-10 fade-in rounded-2xl" style="transition-delay: 100ms;">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div
+                            class="w-14 h-14 rounded-full bg-slate-200 dark:bg-zinc-800 overflow-hidden border border-primary/20">
+                            <img src="https://i.pravatar.cc/150?u=a042581f4e290267041" alt="Client 1"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white">Elena Rodriguez
+                            </h4>
+                            <p class="text-xs uppercase tracking-widest text-primary">CEO | Luxia Interiors</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 italic leading-relaxed">
+                        "KreaDesigns transformó nuestra visión en un ecosistema visual impecable. La atención al detalle
+                        y la dirección estratégica superaron nuestras expectativas."
+                    </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-10 fade-in rounded-2xl" style="transition-delay: 200ms;">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div
+                            class="w-14 h-14 rounded-full bg-slate-200 dark:bg-zinc-800 overflow-hidden border border-primary/20">
+                            <img src="https://i.pravatar.cc/150?u=a042581f4e290267042" alt="Client 2"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white">Marco Valenti</h4>
+                            <p class="text-xs uppercase tracking-widest text-primary">Director | Valenti Watches</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 italic leading-relaxed">
+                        "El nuevo diseño web no solo es hermoso, sino que ha mejorado nuestra tasa de conversión
+                        significativamente. Entienden el mercado del lujo a la perfección."
+                    </p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-10 fade-in rounded-2xl" style="transition-delay: 300ms;">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div
+                            class="w-14 h-14 rounded-full bg-slate-200 dark:bg-zinc-800 overflow-hidden border border-primary/20">
+                            <img src="https://i.pravatar.cc/150?u=a042581f4e290267043" alt="Client 3"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white">Sofia Chen</h4>
+                            <p class="text-xs uppercase tracking-widest text-primary">Fundadora | Aura Skincare</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 italic leading-relaxed">
+                        "Trabajar con Krea fue la mejor inversión para mi marca. Su enfoque minimalista y elegante
+                        capturó exactamente la esencia que buscábamos transmitir."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 dark:bg-black py-16 border-t border-slate-200 dark:border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <div class="flex items-center gap-3">
+                    <img src="../LG NEGRO (1).png" alt="KreaDesigns Logo" class="h-8 dark:invert opacity-80">
+                    <span class="font-display font-bold text-lg tracking-tight text-slate-800 dark:text-white">KREA<span
+                            class="text-primary">DESIGNS</span></span>
+                </div>
+
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/krea.desings/" target="_blank" aria-label="Instagram"
+                        class="text-slate-500 hover:text-primary transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mathias-aguero-tenorio-118b7a173/?locale=en-US" target="_blank"
+                        aria-label="LinkedIn" class="text-slate-500 hover:text-primary transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="pt-8 border-t border-slate-200 dark:border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 uppercase tracking-widest">
+                <p>© 2024 KreaDesigns. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-primary transition-colors">Privacidad</a>
+                    <a href="#" class="hover:text-primary transition-colors">Términos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Dark Mode Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+
+        // Beam Mouse Tracking
+        const beamWrapper = document.querySelector('.beam-wrapper');
+        const heroSection = document.querySelector('.hero-bg');
+
+        if (beamWrapper && heroSection) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                beamWrapper.style.left = `${x}px`;
+                beamWrapper.style.top = `${y}px`;
+            });
+            // Reset position when mouse leaves
+            heroSection.addEventListener('mouseleave', () => {
+                beamWrapper.style.left = `50%`;
+                beamWrapper.style.top = `50%`;
+            });
+        }
+
+        // Check for saved theme preference or use system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
+
+        // Scroll Animations (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media | Araweb Costa Rica | Krea Designs</title>
+    <meta name="description"
+        content="Estrategia de Social Media para Araweb Costa Rica por Krea Designs. Contenido estético y gestión estratégica de redes sociales.">
+    <meta name="keywords" content="Araweb Costa Rica, Social Media, Redes Sociales, Estrategia Digital, Krea Designs">
+
+    <meta name="author" content="Krea Designs">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { primary: "#D4AF37", "background-light": "#FAFAFA", "background-dark": "#0A0A0A" },
+                    fontFamily: { display: ["Space Grotesk", "sans-serif"], serif: ["Cinzel", "serif"], sans: ["Inter", "sans-serif"] },
+                },
+            },
+        };
+    </script>
+    <style>
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .dark .testimonial-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+    <link rel="stylesheet" href="assets/css/circular-gallery.css">
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-sans transition-colors duration-300">
+    <!-- Navigation -->
+    <nav
+        class="fixed top-0 w-full z-50 glass-nav border-b border-slate-200/50 dark:border-white/10 bg-white dark:bg-background-dark/90">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <img src="../LG NEGRO (1).png" alt="Logo"
+                        class="h-10 w-auto dark:invert transition-all duration-300 group-hover:scale-105">
+                    <span
+                        class="font-display font-bold text-xl tracking-tight hidden sm:block text-slate-900 dark:text-white">KREA<span
+                            class="text-primary">DESIGNS</span></span>
+                </a>
+            </div>
+            <div class="hidden md:flex items-center gap-10">
+                <a href="index.html"
+                    class="text-xs uppercase tracking-[0.2em] font-medium hover:text-primary transition-colors">Inicio</a>
+                <a href="projects.html"
+                    class="text-xs uppercase tracking-[0.2em] font-medium text-primary">Portafolio</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="themeToggle"
+                    class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 transition-colors">
+                    <span class="material-icons-outlined block dark:hidden">dark_mode</span>
+                    <span class="material-icons-outlined hidden dark:block">light_mode</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-24 px-6 min-h-screen">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center justify-between mb-12 fade-in">
+                <h1 class="font-display font-semibold text-3xl md:text-5xl uppercase tracking-wide">Social Media</h1>
+                <a href="projects.html"
+                    class="text-xs uppercase tracking-widest text-slate-500 hover:text-primary transition-colors flex items-center gap-2">
+                    <span class="material-icons-outlined text-sm">arrow_back</span> Volver
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Araweb Costa Rica Project -->
+                <div class="group relative overflow-hidden fade-in aspect-square bg-transparent cursor-pointer"
+                    onclick="openHorizontalGallery()">
+                    <div
+                        class="w-full h-full flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
+                        <!-- Theme-aware Araweb Icon (Logo_A Blanca/Negra) -->
+                        <img src="assets/logos/araweb-a-black.webp" alt="Araweb Costa Rica"
+                            class="w-full h-auto block dark:hidden opacity-90 group-hover:opacity-100 transition-opacity">
+                        <img src="assets/logos/araweb-a-white.webp" alt="Araweb Costa Rica"
+                            class="w-full h-auto hidden dark:block opacity-90 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-6 text-center">
+                        <h3 class="font-display font-bold text-2xl text-white mb-2">Araweb Costa Rica</h3>
+                        <p class="text-xs text-primary uppercase tracking-widest mb-4">Social Media</p>
+                        <p class="text-sm text-slate-200 font-light mb-6 uppercase tracking-tight">Explorar Campaña</p>
+                    </div>
+                </div>
+
+
+
+                <!-- Nueva Marca Branding Project -->
+                <div class="group relative overflow-hidden fade-in aspect-square bg-transparent cursor-pointer"
+                    onclick="openBrandingGallery()" style="transition-delay: 100ms;">
+                    <div class="w-full h-full flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
+                        <img src="assets/branding/logo negro.png" alt="Nueva Marca"
+                            class="w-[50%] h-auto block dark:hidden opacity-90 group-hover:opacity-100 transition-opacity">
+                        <img src="assets/branding/logo blanco.png" alt="Nueva Marca"
+                            class="w-[50%] h-auto hidden dark:block opacity-90 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-6 text-center">
+                        <h3 class="font-display font-bold text-2xl text-white mb-2">BUNKR</h3>
+                        <p class="text-xs text-primary uppercase tracking-widest mb-4">Branding & Estrategia</p>
+                        <p class="text-sm text-slate-200 font-light mb-6 uppercase tracking-tight">Explorar Campaña</p>
+                    </div>
+                </div>
+                <div class="w-full aspect-square bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center fade-in"
+                    style="transition-delay: 200ms;">
+                    <span
+                        class="text-slate-400 dark:text-slate-500 text-sm uppercase tracking-widest font-medium">Proyecto
+                        3</span>
+                </div>
+                <div
+                    class="w-full aspect-square bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center fade-in">
+                    <span
+                        class="text-slate-400 dark:text-slate-500 text-sm uppercase tracking-widest font-medium">Proyecto
+                        4</span>
+                </div>
+                <div class="w-full aspect-square bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center fade-in"
+                    style="transition-delay: 100ms;">
+                    <span
+                        class="text-slate-400 dark:text-slate-500 text-sm uppercase tracking-widest font-medium">Proyecto
+                        5</span>
+                </div>
+                <div class="w-full aspect-square bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center fade-in"
+                    style="transition-delay: 200ms;">
+                    <span
+                        class="text-slate-400 dark:text-slate-500 text-sm uppercase tracking-widest font-medium">Proyecto
+                        6</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Testimonials Section -->
+    <section class="py-32 bg-background-light dark:bg-background-dark overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 fade-in">
+                <span class="text-primary font-medium tracking-[0.2em] text-xs uppercase mb-4 block">Testimonios</span>
+                <h2 class="font-display font-semibold text-4xl md:text-5xl mb-6 text-slate-900 dark:text-white">Lo que
+                    dicen nuestros clientes</h2>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-10 fade-in rounded-2xl" style="transition-delay: 100ms;">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div
+                            class="w-14 h-14 rounded-full bg-slate-200 dark:bg-zinc-800 overflow-hidden border border-primary/20">
+                            <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d1" alt="Client 7"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white">Lucía Fernández
+                            </h4>
+                            <p class="text-xs uppercase tracking-widest text-primary">CEO | Bloom Fashion</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 italic leading-relaxed">
+                        "El equipo de Krea logró capturar la esencia de nuestra marca de moda con una sofisticación que
+                        no habíamos encontrado en ninguna otra agencia."
+                    </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-10 fade-in rounded-2xl" style="transition-delay: 200ms;">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div
+                            class="w-14 h-14 rounded-full bg-slate-200 dark:bg-zinc-800 overflow-hidden border border-primary/20">
+                            <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d2" alt="Client 8"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white">Ricardo Silva</h4>
+                            <p class="text-xs uppercase tracking-widest text-primary">Director | Urban Loft</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 italic leading-relaxed">
+                        "Impresionado por la capacidad técnica y el ojo artístico. Nuestro nuevo portal inmobiliario es
+                        ahora la referencia en el sector de lujo."
+                    </p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-10 fade-in rounded-2xl" style="transition-delay: 300ms;">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div
+                            class="w-14 h-14 rounded-full bg-slate-200 dark:bg-zinc-800 overflow-hidden border border-primary/20">
+                            <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d3" alt="Client 9"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white">Clara Méndez</h4>
+                            <p class="text-xs uppercase tracking-widest text-primary">Socia | Méndez & Co</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 italic leading-relaxed">
+                        "Un servicio impecable de principio a fin. El nivel de exclusividad que Krea aporta a través del
+                        diseño es simplemente incomparable."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        class="bg-background-light dark:bg-background-dark py-12 px-6 border-t border-slate-200 dark:border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3 opacity-50">
+                <img src="../LG NEGRO (1).png" alt="Bunkr" class="h-6 dark:invert">
+            </div>
+            <p class="text-xs text-slate-500 uppercase tracking-widest">© 2024 Bunkr. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module">
+        const themeToggleBtn = document.getElementById('themeToggle');
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        });
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            scrollObserver.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) {
+                el.classList.add('visible');
+            }
+        });
+
+        // circular-gallery integration
+        import { CircularGalleryApp } from './assets/js/circular-gallery.js';
+
+        // Global gallery images
+        const galleryImages = [
+            'assets/araweb/DDPW 1.jpg',
+            'assets/araweb/DDPW 2.jpg',
+            'assets/araweb/DDPW 3.jpg',
+            'assets/araweb/DDPW 4.jpg',
+            'assets/araweb/DDPW 5.jpg',
+            'assets/araweb/DDPW 6.jpg',
+            'assets/araweb/DDPW 7_.jpg',
+            'assets/araweb/DDPW 8_.jpg',
+            'assets/araweb/DDPW 9.jpg',
+            'assets/araweb/DDPW 10.jpg'
+        ];
+
+        const brandingImages = [
+            'assets/branding/Artboard 2.jpg',
+            'assets/branding/Artboard 3.jpg',
+            'assets/branding/Artboard 4.jpg',
+            'assets/branding/Artboard 5.jpg',
+            'assets/branding/Artboard 6.jpg',
+            'assets/branding/Artboard 7.jpg',
+            'assets/branding/Artboard 8.jpg',
+            'assets/branding/Artboard 9.jpg',
+            'assets/branding/Artboard 10.jpg',
+            'assets/branding/Artboard 11.jpg',
+            'assets/branding/416724622_11655287.jpg'
+        ];
+
+        function openCircularGallery(title, subtitle, items, aspectRatio = 1.0) {
+            const modal = document.createElement('div');
+            modal.id = 'galleryModal';
+            modal.className = 'fixed inset-0 z-[100] bg-white dark:bg-black overflow-hidden h-screen w-screen';
+            modal.innerHTML = `
+                <div class="fixed top-0 left-0 w-full flex justify-between items-center p-8 z-[110] bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-black/5 dark:border-white/5">
+                    <button id="closeGallery" class="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors uppercase tracking-widest text-[10px] font-bold">
+                        <span class="material-icons-outlined text-lg">arrow_back</span> Cerrar
+                    </button>
+                    <div class="flex flex-col items-center flex-1">
+                        <h2 class="font-display font-bold text-2xl text-black dark:text-white leading-tight">${title}</h2>
+                        <p class="text-primary text-[10px] uppercase tracking-[0.2em]">${subtitle}</p>
+                    </div>
+                    <button class="text-black dark:text-white hover:text-primary transition-colors bg-black/5 dark:bg-white/10 p-3 rounded-full flex items-center justify-center shadow-lg" id="closeButtonTop">
+                        <span class="material-icons-outlined text-3xl">close</span>
+                    </button>
+                </div>
+                <div id="circularGalleryContainer" class="w-full h-full"></div>
+            `;
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+
+            const container = document.getElementById('circularGalleryContainer');
+            const galleryItems = items.map((img, i) => ({ 
+                image: img, 
+                text: `${title} ${i + 1}` 
+            }));
+
+            const app = new CircularGalleryApp(container, {
+                items: galleryItems,
+                bend: 3,
+                textColor: '#D4AF37',
+                borderRadius: 0.05,
+                font: 'bold 24px Inter',
+                aspectRatio: aspectRatio
+            });
+
+            const closeAction = () => {
+                app.destroy();
+                modal.remove();
+                document.body.style.overflow = 'auto';
+            };
+
+            document.getElementById('closeGallery').onclick = closeAction;
+            document.getElementById('closeButtonTop').onclick = closeAction;
+        }
+
+        window.openHorizontalGallery = () => openCircularGallery('Araweb Costa Rica', 'Campaña Optimización Web', galleryImages);
+        window.openBrandingGallery = () => openCircularGallery('BUNKR', 'Campaña Branding', brandingImages);
+    </script>
+
+
+
+</body>
+
+</html>
