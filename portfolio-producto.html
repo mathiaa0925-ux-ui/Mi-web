@@ -51,6 +51,14 @@
             transform: translateY(0);
         }
 
+        .logo-invert-logic {
+            filter: invert(1);
+            transition: filter 0.3s ease;
+        }
+        .dark .logo-invert-logic {
+            filter: invert(0);
+        }
+
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
@@ -72,7 +80,7 @@
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <a href="index.html" class="flex items-center gap-3 group">
-                    <img src="../LG NEGRO (1).png" alt="Logo"
+                    <img src="assets/logo-agency-dark.png" alt="Logo"
                         class="h-10 w-auto dark:invert transition-all duration-300 group-hover:scale-105" fetchpriority="high">
 
                     <span
@@ -114,8 +122,8 @@
                     onclick="openNSGallery()">
                     <div
                         class="w-full h-full flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
-                        <img src="assets/logos/natural-sunshine-icon.png" alt="Natural Sunshine"
-                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity dark:invert-0 invert transform scale-150" loading="lazy">
+                        <img src="assets/logos/natural-sunshine-white.png" alt="Natural Sunshine"
+                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity logo-invert-logic transform scale-150" loading="lazy">
 
                     </div>
                     <div
@@ -149,7 +157,7 @@
     <footer class="bg-background-light dark:bg-background-dark py-12 px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-3 opacity-50">
-                <img src="../LG NEGRO (1).png" alt="Bunkr" class="h-6 dark:invert" loading="lazy">
+                <img src="assets/logo-agency-dark.png" alt="Bunkr" class="h-6 dark:invert" loading="lazy">
 
             </div>
             <p class="text-xs text-slate-500 uppercase tracking-widest">© 2024 Bunkr. All Rights Reserved.</p>
