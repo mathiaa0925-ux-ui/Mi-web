@@ -268,19 +268,38 @@ class Media {
         this.plane.program.uniforms.uViewportSizes.value = [this.viewport.width, this.viewport.height];
       }
     }
-    this.scale = this.screen.height / 1200; // Adjusted scale for better baseline
-    const baseSize = (this.viewport.height * (800 * this.scale)) / this.screen.height;
     
-    // Apply aspect ratio (width relative to height)
+    // Adaptive scaling strategy
+    this.scale = this.screen.height / 1200;
+    let baseSize = (this.viewport.height * (800 * this.scale)) / this.screen.height;
+    
+    const isMobile = this.screen.width < 768;
+    const maxWidthFactor = isMobile ? 0.70 : 0.90; // Limit width significantly on mobile
+    const maxHeightFactor = isMobile ? 0.55 : 0.75; // Stay away from viewport edges
+    
+    // Constrain height
+    if (baseSize > this.viewport.height * maxHeightFactor) {
+      baseSize = this.viewport.height * maxHeightFactor;
+    }
+    
+    // Constrain width relative to defined aspectRatio
+    const maxAllowedWidth = this.viewport.width * maxWidthFactor;
+    if (baseSize * this.aspectRatio > maxAllowedWidth) {
+      baseSize = maxAllowedWidth / this.aspectRatio;
+    }
+
+    // Apply computed scale
     this.plane.scale.y = baseSize;
     this.plane.scale.x = baseSize * this.aspectRatio; 
     
     this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
-    this.padding = baseSize * 0.2; // Proportional padding based on height
+    this.padding = isMobile ? baseSize * 0.5 : baseSize * 0.3; // Significantly more padding on mobile
     this.width = this.plane.scale.x + this.padding;
     this.widthTotal = this.width * this.length;
     this.x = this.width * this.index;
   }
+
+
 }
 
 export class CircularGalleryApp {
