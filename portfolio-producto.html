@@ -52,11 +52,11 @@
         }
 
         .logo-invert-logic {
-            filter: invert(1);
+            filter: grayscale(100%) invert(1) !important;
             transition: filter 0.3s ease;
         }
         .dark .logo-invert-logic {
-            filter: invert(0);
+            filter: grayscale(100%) invert(0) !important;
         }
 
         .scrollbar-hide::-webkit-scrollbar {
