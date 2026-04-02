@@ -117,10 +117,21 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Web Project Slots -->
-                <div
-                    class="w-full aspect-square bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center fade-in">
-                    <span
-                        class="text-slate-400 dark:text-slate-500 text-sm uppercase tracking-widest font-medium">Próximamente</span>
+                <div class="group relative overflow-hidden fade-in aspect-square bg-transparent cursor-pointer"
+                    onclick="openStreebuGallery()">
+                    <div
+                        class="w-full h-full flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
+                        <img src="assets/streebu/Logo N.png" alt="STREEBU Logo"
+                            class="w-[60%] h-auto block dark:hidden opacity-90 group-hover:opacity-100 transition-opacity" loading="lazy">
+                        <img src="assets/streebu/Logo B.png" alt="STREEBU Logo"
+                            class="w-[60%] h-auto hidden dark:block opacity-90 group-hover:opacity-100 transition-opacity" loading="lazy">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-6 text-center">
+                        <h3 class="font-display font-bold text-2xl text-white mb-2 uppercase tracking-wide">STREEBU</h3>
+                        <p class="text-xs text-primary uppercase tracking-widest mb-4">Diseño Web Premium</p>
+                        <p class="text-sm text-slate-200 font-light mb-6 uppercase tracking-tight">Ver Proyecto</p>
+                    </div>
                 </div>
                 <div class="w-full aspect-square bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center fade-in"
                     style="transition-delay: 100ms;">
@@ -276,6 +287,63 @@
             'assets/araweb/DDPW 5.jpg',
             'assets/araweb/DDPW 10.jpg'
         ];
+
+        // Static Gallery for STREEBU
+        window.openStreebuGallery = () => {
+            const images = [
+                'assets/streebu/1.png',
+                'assets/streebu/2.png',
+                'assets/streebu/3.png',
+                'assets/streebu/4.png'
+            ];
+
+            const modal = document.createElement('div');
+            modal.id = 'staticGalleryModal';
+            modal.className = 'fixed inset-0 z-[200] bg-white dark:bg-[#050505] overflow-y-auto h-screen w-screen selection:bg-primary selection:text-white';
+            modal.innerHTML = `
+                <div class="sticky top-0 left-0 w-full flex justify-between items-center p-8 z-[210] bg-white/90 dark:bg-[#050505]/90 backdrop-blur-xl border-b border-black/5 dark:border-white/5">
+                    <button id="closeStaticGallery" class="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors uppercase tracking-[0.2em] text-[10px] font-bold group">
+                        <span class="material-icons-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span> Cerrar
+                    </button>
+                    <div class="flex flex-col items-center flex-1">
+                        <h2 class="font-display font-bold text-3xl text-black dark:text-white leading-tight uppercase tracking-tight">STREEBU</h2>
+                        <p class="text-primary text-[10px] uppercase tracking-[0.3em] font-medium">Diseño Web Estático</p>
+                    </div>
+                    <button class="text-black dark:text-white hover:text-primary transition-colors bg-black/5 dark:bg-white/10 p-3 rounded-full flex items-center justify-center group" id="closeStaticTop">
+                        <span class="material-icons-outlined text-3xl group-hover:rotate-90 transition-transform duration-300">close</span>
+                    </button>
+                </div>
+                <div class="max-w-[1200px] mx-auto py-24 px-6 flex flex-col gap-16">
+                    ${images.map(img => `
+                        <div class="relative w-full bg-slate-100 dark:bg-white/2 rounded-2xl overflow-hidden shadow-2xl border border-black/5 dark:border-white/5 transition-all duration-700 hover:shadow-primary/10">
+                            <img src="${img}" class="w-full h-auto block" loading="lazy" alt="STREEBU Horizontal Snapshot">
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="py-32 text-center">
+                    <div class="w-12 h-[1px] bg-primary/30 mx-auto mb-8"></div>
+                    <p class="text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] text-[10px] font-bold">Fin de visualización</p>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+
+            const closeAction = () => {
+                modal.classList.add('opacity-0');
+                setTimeout(() => {
+                    modal.remove();
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            };
+
+            document.getElementById('closeStaticGallery').onclick = closeAction;
+            document.getElementById('closeStaticTop').onclick = closeAction;
+            
+            // Fade-in effect
+            modal.style.opacity = '0';
+            modal.style.transition = 'opacity 0.3s ease';
+            requestAnimationFrame(() => modal.style.opacity = '1');
+        };
 
         function openCircularGallery(title, subtitle, items, aspectRatio = 1.0) {
             const modal = document.createElement('div');
