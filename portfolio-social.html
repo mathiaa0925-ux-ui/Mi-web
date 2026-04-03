@@ -161,6 +161,22 @@
                         class="text-slate-400 dark:text-slate-500 text-sm uppercase tracking-widest font-medium">Proyecto
                         3</span>
                 </div>
+                <!-- Diseños Católicos Project -->
+                <div class="group relative overflow-hidden fade-in aspect-square bg-transparent cursor-pointer"
+                    onclick="openDisenosGallery()" style="transition-delay: 200ms;">
+                    <div class="w-full h-full flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
+                        <img src="assets/disenos-catolicos/logo-black.png" alt="Diseños Católicos"
+                            class="w-[60%] h-auto block dark:hidden opacity-90 group-hover:opacity-100 transition-opacity" loading="lazy">
+                        <img src="assets/disenos-catolicos/logo-white.png" alt="Diseños Católicos"
+                            class="w-[60%] h-auto hidden dark:block opacity-90 group-hover:opacity-100 transition-opacity" loading="lazy">
+                    </div>
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-6 text-center">
+                        <h3 class="font-display font-bold text-2xl text-white mb-2">Diseños Católicos</h3>
+                        <p class="text-xs text-primary uppercase tracking-widest mb-4">Social Media</p>
+                        <p class="text-sm text-slate-200 font-light mb-6 uppercase tracking-tight">Explorar Campaña</p>
+                    </div>
+                </div>
+
                 <div
                     class="w-full aspect-square bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center fade-in">
                     <span
@@ -330,6 +346,12 @@
             'assets/branding/416724622_11655287.jpg'
         ];
 
+        const disenosCatolicosImages = [
+            'assets/disenos-catolicos/propuesta-1.jpg',
+            'assets/disenos-catolicos/propuesta-2.jpg',
+            'assets/disenos-catolicos/propuesta-3.jpg'
+        ];
+
         function openCircularGallery(title, subtitle, items, aspectRatio = 1.0) {
             const modal = document.createElement('div');
             modal.id = 'galleryModal';
@@ -379,6 +401,7 @@
 
         window.openHorizontalGallery = () => openCircularGallery('Araweb Costa Rica', 'Campaña Optimización Web', galleryImages);
         window.openBrandingGallery = () => openCircularGallery('BUNKR', 'Campaña Branding', brandingImages);
+        window.openDisenosGallery = () => openCircularGallery('Diseños Católicos', 'Social Media', disenosCatolicosImages, 0.75);
     </script>
 
 
