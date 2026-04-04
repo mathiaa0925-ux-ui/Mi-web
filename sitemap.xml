@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Página Principal -->
+    <url>
+        <loc>https://kreadesigns.es/</loc>
+        <lastmod>2026-04-04</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://kreadesigns.es/index.html</loc>
+        <lastmod>2026-04-04</lastmod>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Secciones de Alta Prioridad (Portafolio y Contacto) -->
+    <url>
+        <loc>https://kreadesigns.es/projects.html</loc>
+        <lastmod>2026-04-04</lastmod>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://kreadesigns.es/contact.html</loc>
+        <lastmod>2026-04-04</lastmod>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Secciones Principales -->
+    <url>
+        <loc>https://kreadesigns.es/services.html</loc>
+        <lastmod>2026-04-04</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://kreadesigns.es/about.html</loc>
+        <lastmod>2026-04-04</lastmod>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Categorías de Portafolio -->
+    <url>
+        <loc>https://kreadesigns.es/portfolio-publicidad.html</loc>
+        <lastmod>2026-04-04</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://kreadesigns.es/portfolio-social.html</loc>
+        <lastmod>2026-04-04</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://kreadesigns.es/portfolio-branding.html</loc>
+        <lastmod>2026-04-04</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://kreadesigns.es/portfolio-web.html</loc>
+        <lastmod>2026-04-04</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://kreadesigns.es/portfolio-producto.html</loc>
+        <lastmod>2026-04-04</lastmod>
+        <priority>0.7</priority>
+    </url>
+</urlset>
