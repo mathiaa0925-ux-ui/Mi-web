@@ -182,74 +182,70 @@
             }
         });
 
-        // circular-gallery integration
-        import { CircularGalleryApp } from './assets/js/circular-gallery.js';
+        window.open3DGallery = () => {
+            const images = [
+                'assets/3dworks/Cartel_Mercadito.png',
+                'assets/3dworks/Papas_Fritas_Composicion.png',
+                'assets/3dworks/Papas_Fritas_Encuadre_Abajo.png',
+                'assets/3dworks/Papas_Fritas_Encuadre_Centrado.png',
+                'assets/3dworks/Papas_Fritas_Encuadre_De_Lado.png',
+                'assets/3dworks/Render_Final_Diorama_Cycles.png',
+                'assets/3dworks/Render_Final_Diorama_Street.Eevee.png',
+                'assets/3dworks/Render_Final_Diorama_Street.Eevee_CARRO.png',
+                'assets/3dworks/Render_Mathias.png',
+                'assets/3dworks/Stand 3.png',
+                'assets/3dworks/Stand.png',
+                'assets/3dworks/Stand2.png',
+                'assets/3dworks/composicion_blender_final.png'
+            ];
 
-        // 3D Works images
-        const works3DImages = [
-            'assets/3dworks/Cartel_Mercadito.png',
-            'assets/3dworks/Papas_Fritas_Composicion.png',
-            'assets/3dworks/Papas_Fritas_Encuadre_Abajo.png',
-            'assets/3dworks/Papas_Fritas_Encuadre_Centrado.png',
-            'assets/3dworks/Papas_Fritas_Encuadre_De_Lado.png',
-            'assets/3dworks/Render_Final_Diorama_Cycles.png',
-            'assets/3dworks/Render_Final_Diorama_Street.Eevee.png',
-            'assets/3dworks/Render_Final_Diorama_Street.Eevee_CARRO.png',
-            'assets/3dworks/Render_Mathias.png',
-            'assets/3dworks/Stand 3.png',
-            'assets/3dworks/Stand.png',
-            'assets/3dworks/Stand2.png',
-            'assets/3dworks/composicion_blender_final.png'
-        ];
-
-        function openCircularGallery(title, subtitle, items, aspectRatio = 1.0) {
             const modal = document.createElement('div');
-            modal.id = 'galleryModal';
-            modal.className = 'fixed inset-0 z-[100] bg-white dark:bg-black overflow-hidden h-screen w-screen';
+            modal.id = 'staticGalleryModal';
+            modal.className = 'fixed inset-0 z-[200] bg-white dark:bg-[#050505] overflow-y-auto h-screen w-screen selection:bg-primary selection:text-white';
             modal.innerHTML = `
-                <div class="fixed top-0 left-0 w-full flex justify-between items-center p-8 z-[110] bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-black/5 dark:border-white/5">
-                    <button id="closeGallery" class="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors uppercase tracking-widest text-[10px] font-bold">
-                        <span class="material-icons-outlined text-lg">arrow_back</span> Cerrar
+                <div class="sticky top-0 left-0 w-full flex justify-between items-center p-8 z-[210] bg-white/90 dark:bg-[#050505]/90 backdrop-blur-xl border-b border-black/5 dark:border-white/5">
+                    <button id="closeStaticGallery" class="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors uppercase tracking-[0.2em] text-[10px] font-bold group">
+                        <span class="material-icons-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span> Cerrar
                     </button>
                     <div class="flex flex-col items-center flex-1">
-                        <h2 class="font-display font-bold text-2xl text-black dark:text-white leading-tight">${title}</h2>
-                        <p class="text-primary text-[10px] uppercase tracking-[0.2em]">${subtitle}</p>
+                        <h2 class="font-display font-bold text-3xl text-black dark:text-white leading-tight uppercase tracking-tight">3D WORKS</h2>
+                        <p class="text-primary text-[10px] uppercase tracking-[0.3em] font-medium">Renderizado 3D</p>
                     </div>
-                    <button class="text-black dark:text-white hover:text-primary transition-colors bg-black/5 dark:bg-white/10 p-3 rounded-full flex items-center justify-center shadow-lg" id="closeButtonTop">
-                        <span class="material-icons-outlined text-3xl">close</span>
+                    <button class="text-black dark:text-white hover:text-primary transition-colors bg-black/5 dark:bg-white/10 p-3 rounded-full flex items-center justify-center group" id="closeStaticTop">
+                        <span class="material-icons-outlined text-3xl group-hover:rotate-90 transition-transform duration-300">close</span>
                     </button>
                 </div>
-                <div id="circularGalleryContainer" class="w-full h-full"></div>
+                <div class="max-w-[1200px] mx-auto py-24 px-6 flex flex-col gap-16">
+                    ${images.map(img => `
+                        <div class="relative w-full bg-slate-100 dark:bg-white/2 rounded-2xl overflow-hidden shadow-2xl border border-black/5 dark:border-white/5 transition-all duration-700 hover:shadow-primary/10">
+                            <img src="${img}" class="w-full h-auto block" loading="lazy" alt="3D Works Snapshot">
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="py-32 text-center">
+                    <div class="w-12 h-[1px] bg-primary/30 mx-auto mb-8"></div>
+                    <p class="text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] text-[10px] font-bold">Fin de visualización</p>
+                </div>
             `;
             document.body.appendChild(modal);
             document.body.style.overflow = 'hidden';
 
-            const container = document.getElementById('circularGalleryContainer');
-            const galleryItems = items.map((img, i) => ({ 
-                image: img, 
-                text: `${title} ${i + 1}` 
-            }));
-
-            const app = new CircularGalleryApp(container, {
-                items: galleryItems,
-                bend: 3,
-                textColor: '#D4AF37',
-                borderRadius: 0.05,
-                font: 'bold 24px Inter',
-                aspectRatio: aspectRatio
-            });
-
             const closeAction = () => {
-                app.destroy();
-                modal.remove();
-                document.body.style.overflow = 'auto';
+                modal.classList.add('opacity-0');
+                setTimeout(() => {
+                    modal.remove();
+                    document.body.style.overflow = 'auto';
+                }, 300);
             };
 
-            document.getElementById('closeGallery').onclick = closeAction;
-            document.getElementById('closeButtonTop').onclick = closeAction;
-        }
-
-        window.open3DGallery = () => openCircularGallery('Proyectos 3D', '3D Works', works3DImages, 1.0);
+            document.getElementById('closeStaticGallery').onclick = closeAction;
+            document.getElementById('closeStaticTop').onclick = closeAction;
+            
+            // Fade-in effect
+            modal.style.opacity = '0';
+            modal.style.transition = 'opacity 0.3s ease';
+            requestAnimationFrame(() => modal.style.opacity = '1');
+        };
     </script>
 </body>
 
