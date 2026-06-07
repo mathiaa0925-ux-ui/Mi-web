@@ -62,6 +62,13 @@
             transform: translateY(0);
         }
     </style>
+
+    <style>
+        /* Hide default Google Translate widget */
+        .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
+        body { top: 0px !important; }
+        #google_translate_element { display: none !important; }
+    </style>
 </head>
 
 <body
@@ -93,6 +100,19 @@
             </div>
 
             <div class="flex items-center gap-4">
+                                <!-- Custom Language Selector -->
+                <div class="relative group hidden sm:block">
+                    <button class="text-xs uppercase tracking-[0.2em] font-medium text-slate-900 dark:text-white hover:text-primary transition-colors flex items-center gap-1">
+                        <span id="currentLang">ES</span>
+                        <span class="material-icons-outlined text-[14px]">language</span>
+                    </button>
+                    <div class="absolute right-0 top-full pt-4 w-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                        <div class="bg-white dark:bg-[#0A0A0A] border border-slate-200 dark:border-white/10 flex flex-col shadow-xl">
+                            <button onclick="changeLanguage('es')" class="text-xs uppercase tracking-[0.2em] font-medium hover:text-primary hover:bg-slate-50 dark:hover:bg-white/5 text-left px-4 py-3 transition-colors">ES</button>
+                            <button onclick="changeLanguage('en')" class="text-xs uppercase tracking-[0.2em] font-medium hover:text-primary hover:bg-slate-50 dark:hover:bg-white/5 text-left px-4 py-3 transition-colors border-t border-slate-100 dark:border-white/5">EN</button>
+                        </div>
+                    </div>
+                </div>
                 <button id="themeToggle"
                     class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 transition-colors">
                     <span class="material-icons-outlined block dark:hidden">dark_mode</span>
@@ -273,6 +293,35 @@
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
+
+    <!-- Custom Language Logic & Google Translate -->
+    <script>
+        function changeLanguage(lang) {
+            document.cookie = "googtrans=/es/" + lang + "; path=/;";
+            document.cookie = "googtrans=/es/" + lang + "; domain=" + window.location.hostname + "; path=/;";
+            window.location.reload();
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const match = document.cookie.match(/googtrans=\/es\/(en|es)/);
+            if (match && match[1]) {
+                document.querySelectorAll('#currentLang').forEach(el => {
+                    el.textContent = match[1].toUpperCase();
+                });
+            }
+        });
+    </script>
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,es',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
