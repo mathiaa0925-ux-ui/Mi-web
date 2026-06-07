@@ -74,9 +74,14 @@
     <link rel="stylesheet" href="assets/css/circular-gallery.css">
 
     <style>
-        /* Hide default Google Translate widget */
-        .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
-        body { top: 0px !important; }
+        /* Hide Google Translate Banner completely */
+        iframe.goog-te-banner-frame { display: none !important; }
+        .goog-te-banner-frame { display: none !important; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        .VIpgJd-ZVi9od-aZ2wEe-wOHMyf { display: none !important; }
+        .VIpgJd-ZVi9od-ORHb-OEVmcd { display: none !important; }
+        body { top: 0 !important; position: static !important; }
+        html { top: 0 !important; position: static !important; margin-top: 0 !important; }
         #google_translate_element { display: none !important; }
     </style>
 </head>
