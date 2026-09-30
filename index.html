@@ -190,6 +190,41 @@
             opacity: 1;
             transform: scale(1.1);
         }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            background: #0A0A0A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #preloader.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #preloader-brand {
+            font-family: "Space Grotesk", sans-serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            letter-spacing: 0.05em;
+            color: #fff;
+            opacity: 0;
+            transform: scale(0.92);
+            animation: preloaderIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes preloaderIn {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Magnetic buttons: JS drives transform directly, no CSS transition
+           during movement (added dynamically on release only) so dragging
+           the mouse feels 1:1 instead of trailing behind it. */
+        .btn-magnetic { display: inline-block; will-change: transform; }
     </style>
 
     <style>
@@ -207,6 +242,10 @@
 
 <body
     class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-sans transition-colors duration-300">
+
+    <div id="preloader" aria-hidden="true">
+        <span id="preloader-brand">KREA<span class="text-primary">DESIGNS</span></span>
+    </div>
 
     <!-- Navigation -->
     <nav
@@ -296,11 +335,11 @@
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6 fade-in"
                 style="transition-delay: 300ms;">
                 <a href="projects.html"
-                    class="group relative px-8 py-4 bg-primary text-black font-bold uppercase tracking-widest text-xs rounded-none hover:bg-gold-dark transition-all shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.23)] hover:-translate-y-1">
+                    class="btn-magnetic group relative px-8 py-4 bg-primary text-black font-bold uppercase tracking-widest text-xs rounded-none hover:bg-gold-dark transition-colors shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.23)]">
                     Explorar Portafolio
                 </a>
                 <a href="services.html"
-                    class="group px-8 py-4 border border-white/20 hover:border-primary text-white font-bold uppercase tracking-widest text-xs transition-all hover:bg-white/5 hover:-translate-y-1">
+                    class="btn-magnetic group px-8 py-4 border border-white/20 hover:border-primary text-white font-bold uppercase tracking-widest text-xs transition-colors hover:bg-white/5">
                     Nuestros Servicios
                 </a>
             </div>
@@ -414,7 +453,7 @@
                 Trabajamos con negocios que quieren resultados reales, no solo una vitrina bonita.
             </p>
             <a href="contact.html"
-                class="inline-block px-12 py-5 bg-primary text-white dark:text-black font-bold uppercase tracking-widest text-xs hover:bg-gold-dark hover:scale-105 transition-all shadow-xl shadow-primary/20">
+                class="btn-magnetic inline-block px-12 py-5 bg-primary text-white dark:text-black font-bold uppercase tracking-widest text-xs hover:bg-gold-dark transition-colors shadow-xl shadow-primary/20">
                 Iniciar Proyecto
             </a>
         </div>
@@ -602,7 +641,16 @@
         document.querySelectorAll('.fade-in').forEach((el) => {
             observer.observe(el);
         });
+
+        // Preloader: hide once the page has fully loaded, with a hard
+        // timeout fallback so it can never get stuck covering the site.
+        function hidePreloader() {
+            document.getElementById('preloader')?.classList.add('is-hidden');
+        }
+        window.addEventListener('load', hidePreloader);
+        setTimeout(hidePreloader, 2500);
     </script>
+    <script src="assets/js/magnetic.js"></script>
 
     <!-- Custom Language Logic & Google Translate -->
     <script>
