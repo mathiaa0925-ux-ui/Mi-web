@@ -5,14 +5,14 @@
     <link rel="canonical" href="https://kreadesigns.es/portfolio-producto.html" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diseño y Manipulación de Producto Exclusivo | Krea Designs</title>
+    <title>Diseño de Producto | Krea Designs</title>
     <link rel="icon" type="image/png" href="https://kreadesigns.es/favicon.png" sizes="512x512">
     <link rel="apple-touch-icon" href="https://kreadesigns.es/favicon.png">
     <link rel="icon" type="image/png" href="https://kreadesigns.es/favicon.png" sizes="192x192">
     <link rel="icon" type="image/png" href="https://kreadesigns.es/favicon.png" sizes="32x32">
     <meta name="theme-color" content="#0A0A0A">
-    <meta name="description" content="Proyectos de diseño de producto con altísimo nivel de detalle. Estética premium y visuales de alto impacto.">
-    <meta name="keywords" content="Diseño de Producto, Manipulación de Producto, Krea Designs, Portafolio">
+    <meta name="description" content="Proyectos reales de diseño y fotografía de producto, con atención al detalle en cada imagen.">
+    <meta name="keywords" content="Diseño de Producto, Fotografía de Producto, Krea Designs, Portafolio">
     <meta name="author" content="Krea Designs">
 
     <!-- Google Fonts -->
@@ -162,6 +162,20 @@
                     </div>
                 </div>
 
+                <!-- Pelos Y Bigotes Project (Proyecto 2) -->
+                <div class="group relative overflow-hidden fade-in aspect-square bg-transparent cursor-pointer"
+                    onclick="openPYBGallery()">
+                    <div class="w-full h-full flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
+                        <img src="assets/pelos-y-bigotes/producto-01.jpg" alt="Diseño de producto para Pelos Y Bigotes"
+                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" loading="lazy">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-6 text-center">
+                        <h3 class="font-display font-bold text-2xl text-white mb-2">Pelos Y Bigotes</h3>
+                        <p class="text-xs text-primary uppercase tracking-widest mb-4">Diseño de Producto</p>
+                        <p class="text-sm text-slate-200 font-light mb-6 uppercase tracking-tight">Explorar Campaña</p>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -171,10 +185,10 @@
     <footer class="bg-background-light dark:bg-background-dark py-12 px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-3 opacity-50">
-                <img src="assets/logo-agency-dark.png" alt="Proyecto corporativo para Bunkr por Krea Designs" class="h-6 dark:invert" loading="lazy">
+                <img src="assets/logo-agency-dark.png" alt="KreaDesigns" class="h-6 dark:invert" loading="lazy">
 
             </div>
-            <p class="text-xs text-slate-500 uppercase tracking-widest">© 2024 Bunkr. All Rights Reserved.</p>
+            <p class="text-xs text-slate-500 uppercase tracking-widest">© 2024 KreaDesigns. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -300,6 +314,22 @@
         }
 
         window.openNSGallery = () => openCircularGallery('Natural Sunshine', 'Diseño de Producto', nsImages, 0.5625);
+
+        const pybImages = [
+            'assets/pelos-y-bigotes/producto-01.jpg',
+            'assets/pelos-y-bigotes/producto-02.jpg',
+            'assets/pelos-y-bigotes/producto-03.jpg',
+            'assets/pelos-y-bigotes/producto-04.jpg',
+            'assets/pelos-y-bigotes/producto-05.jpg',
+            'assets/pelos-y-bigotes/producto-06.jpg',
+            'assets/pelos-y-bigotes/producto-07.jpg',
+            'assets/pelos-y-bigotes/producto-08.jpg',
+            'assets/pelos-y-bigotes/producto-09.jpg',
+            'assets/pelos-y-bigotes/producto-10.jpg',
+            'assets/pelos-y-bigotes/producto-11.jpg'
+        ];
+
+        window.openPYBGallery = () => openCircularGallery('Pelos Y Bigotes', 'Diseño de Producto', pybImages, 1.0);
     </script>
 
     <!-- Custom Language Logic & Google Translate -->
