@@ -312,14 +312,14 @@ export class CircularGalleryApp {
       borderRadius = 0.05,
       font = 'bold 30px Inter',
       scrollSpeed = 2,
-      scrollEase = 0.05,
+      scrollEase = 0.075,
       aspectRatio = 1.0
     } = {}
   ) {
     this.container = container;
     this.scrollSpeed = scrollSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
-    this.onCheckDebounce = debounce(this.onCheck, 200);
+    this.onCheckDebounce = debounce(this.onCheck, 100);
     this.createRenderer();
     this.createCamera();
     this.createScene();
