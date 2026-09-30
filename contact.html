@@ -5,14 +5,14 @@
     <link rel="canonical" href="https://kreadesigns.es/contact.html" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | Inicia tu Proyecto de Diseño y Branding | Krea Designs</title>
+    <title>Contacto | Iniciá tu Proyecto de Web o Automatización | Krea Designs</title>
     <link rel="icon" type="image/png" href="https://kreadesigns.es/favicon.png" sizes="512x512">
     <link rel="apple-touch-icon" href="https://kreadesigns.es/favicon.png">
     <link rel="icon" type="image/png" href="https://kreadesigns.es/favicon.png" sizes="192x192">
     <link rel="icon" type="image/png" href="https://kreadesigns.es/favicon.png" sizes="32x32">
     <meta name="theme-color" content="#0A0A0A">
-    <meta name="description" content="¿Listo para transformar la presencia de tu marca? Contáctanos para solicitar un presupuesto a medida para tus necesidades de branding y diseño digital exclusivo.">
-    <meta name="keywords" content="Contacto, Iniciar Proyecto, Consultoría de Diseño, Agencia, Estudio Creativo">
+    <meta name="description" content="¿Listo para que tu negocio tenga un sitio web o una automatización que realmente funcione? Contactanos y te armamos una propuesta a medida.">
+    <meta name="keywords" content="Contacto, Iniciar Proyecto, Diseño Web, Automatización, Agencia Costa Rica">
     <meta name="author" content="Krea Designs">
 
     <!-- Google Fonts -->
@@ -140,8 +140,8 @@
                 <h1 class="font-display font-semibold text-5xl md:text-6xl mb-6">Trabajemos <span
                         class="text-primary italic font-light">Juntos.</span></h1>
                 <p class="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto font-light leading-relaxed">
-                    Aceptamos un número limitado de proyectos para asegurar la máxima calidad y exclusividad. Cuéntanos
-                    sobre tu marca.
+                    Contanos sobre tu negocio y qué te está haciendo perder tiempo o ventas — de ahí armamos la
+                    propuesta.
                 </p>
             </div>
 
@@ -177,8 +177,11 @@
                 <form action="https://formsubmit.co/mathiaasec0709@gmail.com" method="POST" class="space-y-8">
                     <!-- Configuración de FormSubmit -->
                     <input type="hidden" name="_subject" value="Nuevo Proyecto: {Nombre}">
-                    <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
+                    <!-- Captcha de FormSubmit habilitado (antes estaba desactivado, dejando el
+                         formulario sin ningún filtro de spam) -->
+                    <!-- Honeypot: campo invisible para personas, que los bots sí suelen llenar -->
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="space-y-2">
@@ -215,8 +218,9 @@
                             <select id="service" name="Servicio" required
                                 class="w-full bg-transparent border-b border-slate-300 dark:border-white/20 py-3 text-slate-500 dark:text-slate-400 focus:outline-none focus:border-primary transition-colors cursor-pointer dark:bg-zinc-900">
                                 <option value="" disabled selected>Selecciona un servicio</option>
+                                <option value="web">Sitio Web</option>
+                                <option value="automation">Automatización</option>
                                 <option value="branding">Diseño de Marca & Identidad</option>
-                                <option value="web">Diseño Web Premium</option>
                                 <option value="advertising">Publicidad Estratégica</option>
                                 <option value="social">Gestión de Redes & Contenido</option>
                                 <option value="other">Otro / Múltiples</option>
